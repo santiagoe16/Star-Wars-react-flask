@@ -1,7 +1,58 @@
-/*
-    home.css: This website contains selectors only used in home.css
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    grid-template-rows: repeat(2, auto); 
+    gap: 18px; 
+    overflow-x: auto;
+    max-height: auto; 
+    white-space: nowrap; 
+    grid-auto-flow: column;
+    padding-bottom: 10px;
+}
 
-    All pages share the styles on index.css but you should create 
-    one more css for each page that will contain the selected used 
-    on that page only (the ones not reused in other pages).
-*/
+.card-container::-webkit-scrollbar {
+    height: 8px;
+}
+
+.card-container::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 4px;
+}
+
+.card {
+    width: 260px; 
+    height: 230px;
+    border-radius: 7px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.card a {
+    text-decoration: none;
+    color: black;
+}
+
+.card img {
+    width: 100%;
+    height: 146px;
+    object-fit: cover;
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
+}
+.card h5 {
+    margin-top: 1px;
+}
+
+.information img{
+    width: 840px;
+    height: 500px;
+    object-fit: cover;
+}
+.card-body h5{
+    max-width: 100%; 
+    white-space: normal;
+    overflow-wrap: break-word; 
+}
+.container{
+    height: 90%;
+}

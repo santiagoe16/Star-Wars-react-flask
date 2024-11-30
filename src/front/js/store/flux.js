@@ -13,12 +13,57 @@ const getState = ({ getStore, getActions, setStore }) => {
 					background: "white",
 					initial: "white"
 				}
-			]
+			],
+			characters: [],
+			locations: [],
+			vehicles: [],
+			species: [],
+			favorites: []
 		},
 		actions: {
-			// Use getActions to call a function within a fuction
-			exampleFunction: () => {
-				getActions().changeColor(0, "green");
+			getCharacters: () => {
+				fetch("https://starwars-databank-server.vercel.app/api/v1/characters?page=1&limit=50")
+					.then((response) => response.json())
+					.then((result) => {
+						setStore({ characters: result.data });
+					})
+					.catch((error) => console.error("Error fetching characters:", error));
+			},
+			getLocations: () => {
+				fetch("https://starwars-databank-server.vercel.app/api/v1/locations?page=1&limit=50")
+					.then((response) => response.json())
+					.then((result) => {
+						setStore({ locations: result.data });
+					})
+					.catch((error) => console.error("Error fetching characters:", error));
+			},
+			getVehicles: () => {
+				fetch("https://starwars-databank-server.vercel.app/api/v1/vehicles?page=1&limit=50")
+					.then((response) => response.json())
+					.then((result) => {
+						setStore({ vehicles: result.data });
+					})
+					.catch((error) => console.error("Error fetching characters:", error));
+			},
+			getSpecies: () => {
+				fetch("https://starwars-databank-server.vercel.app/api/v1/species?page=1&limit=50")
+					.then((response) => response.json())
+					.then((result) => {
+						setStore({ species: result.data });
+					})
+					.catch((error) => console.error("Error fetching characters:", error));
+			},
+
+			addFavorites: (name) => {
+				const store = getStore();
+
+				if (!store.favorites.includes(name)) {
+					
+					const updatedFavorites = [...store.favorites, name];
+					setStore({ favorites: updatedFavorites });
+				} else {
+					setStore({favorites: store.favorites.filter((favorite) => favorite !== name)});
+    			}
 			},
 
 			getMessage: async () => {
