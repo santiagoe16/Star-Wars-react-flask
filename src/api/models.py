@@ -15,5 +15,24 @@ class User(db.Model):
         return {
             "id": self.id,
             "email": self.email,
-            # do not serialize the password, its a security breach
         }
+    
+class Favorite(db.Model):
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    character_id = db.Column(db.String(200), unique=False, nullable=False)
+    name = db.Column(db.String(200), unique=True, nullable=False)
+    image = db.Column(db.String(1000), unique=False, nullable=False)
+    category = db.Column(db.String(100), unique=False, nullable=False)
+
+    def __repr__(self):
+        return f'<Favorite {self.name}>'
+
+    def serialize(self):
+        return {
+            "id": self.id,
+            "character_id": self.character_id,
+            "name": self.name,
+            "image": self.image,
+            "category": self.category,
+        }
+    

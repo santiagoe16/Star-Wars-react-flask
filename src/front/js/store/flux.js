@@ -1,3 +1,5 @@
+import { Search } from "react-bootstrap-icons";
+
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
@@ -18,11 +20,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 			locations: [],
 			vehicles: [],
 			species: [],
-			favorites: []
+			favorites: [],
+			search: ""
 		},
 		actions: {
 			getCharacters: () => {
-				fetch("https://starwars-databank-server.vercel.app/api/v1/characters?page=1&limit=50")
+				fetch("https://starwars-databank-server.vercel.app/api/v1/characters?page=1&limit=400")
 					.then((response) => response.json())
 					.then((result) => {
 						setStore({ characters: result.data });
@@ -53,17 +56,60 @@ const getState = ({ getStore, getActions, setStore }) => {
 					})
 					.catch((error) => console.error("Error fetching characters:", error));
 			},
+			setSearch: (searchTerm) => {
+				setStore({search: searchTerm})
+			},
 
-			addFavorites: (name) => {
-				const store = getStore();
-
-				if (!store.favorites.includes(name)) {
+			getFavorites: () =>{
+				console.log("soy favorites get");
+				
+				fetch("https://probable-space-couscous-pjgwq64xwv7qc69w5-3001.app.github.dev/api/favorites",{
+					method: "GET"
+				})
+				.then(response => response.json()) 
+				.then(data => {
+					setStore({favorites:data})
+					console.log(data);
 					
-					const updatedFavorites = [...store.favorites, name];
-					setStore({ favorites: updatedFavorites });
-				} else {
-					setStore({favorites: store.favorites.filter((favorite) => favorite !== name)});
-    			}
+				})
+				.catch(error => {
+					console.error("Error fetching favorites:", error);
+				});
+			},
+
+			addFavorites: (favorite) => {
+				const store = getStore()
+				const isFavorite = store.favorites.find((item)=> item.name === favorite.name)
+
+				if(!isFavorite){
+					fetch("https://probable-space-couscous-pjgwq64xwv7qc69w5-3001.app.github.dev/api/favorites", {
+						method: "POST",
+						headers: {
+							"Content-Type": "application/json",
+						},
+						body: JSON.stringify({ 
+							character_id: favorite._id,
+							name: favorite.name,
+							image: favorite.image,
+							category: favorite.category,
+						}),
+					})
+					.then(response => response.json()) 
+					.then(()=>getActions().getFavorites()) 
+					.catch(error => {
+						console.error("Error adding favorite:", error);
+					});
+				}
+				else{
+					fetch(`https://probable-space-couscous-pjgwq64xwv7qc69w5-3001.app.github.dev/api/favorites/${isFavorite.id}`, {
+						method: "DELETE"
+					})
+					.then(response => response.json()) 
+					.then(()=>getActions().getFavorites()) 
+					.catch(error => {
+						console.error("Error deleting favorite:", error);
+					});
+				}
 			},
 
 			getMessage: async () => {

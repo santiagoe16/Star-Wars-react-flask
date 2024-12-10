@@ -1,27 +1,28 @@
 import React, { useContext } from "react";
 import { Context } from "../store/appContext";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import starWars from "../../img/star-wars-logo-1002.png";
 
 export const Navbar = () => {
 	const { store, actions } = useContext(Context);
+	const navigate = useNavigate("")
+	const handleLogo = () =>{
+		actions.setSearch("")
+		navigate("/")
+	}
 	return (
-		<nav className="navbar navbar-light bg-light mb-3">
+		<nav className="navbar mb-3">
 			<div className="container">
-				<Link to="/">
-					<img src={starWars} style={{width: "92px", height: "51px"}}></img>
-				</Link>
-				<div className="dropdown ml-auto">
-					<button className="btn btn-primary dropdown-toggle " type="button" data-bs-toggle="dropdown" aria-expanded="false">
+				<a style={{cursor: "pointer"}} 
+					onClick={()=>handleLogo()}
+				>
+					<img src={starWars} style={{width: "121px", height: "62px"}}></img>
+				</a>
+				<Link to={"/favorites"}>
+					<button className="orange-btn" >
 						Favorites
 					</button>
-					<ul className="dropdown-menu ">
-						{store.favorites && store.favorites.length > 0 ? (store.favorites.map((favorite, index) => (
-							<li key={index} className=" dropdown-item user-select-none me-2"> {favorite} <i onClick={()=>actions.addFavorites(favorite)} className="fas fa-trash ms-2" style={{cursor: "pointer"}}></i></li>
-						))) : <li className="dropdown-item user-select-none me-2">(empty)</li>}
-						
-					</ul>
-				</div>
+				</Link>
 			</div>
 		</nav>
 	);
