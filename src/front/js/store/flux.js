@@ -63,7 +63,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			getFavorites: () =>{
 				console.log("soy favorites get");
 				
-				fetch("https://probable-space-couscous-pjgwq64xwv7qc69w5-3001.app.github.dev/api/favorites",{
+				fetch(process.env.BACKEND_URL + "/api/favorites",{
 					method: "GET"
 				})
 				.then(response => response.json()) 
@@ -82,7 +82,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				const isFavorite = store.favorites.find((item)=> item.name === favorite.name)
 
 				if(!isFavorite){
-					fetch("https://probable-space-couscous-pjgwq64xwv7qc69w5-3001.app.github.dev/api/favorites", {
+					fetch(process.env.BACKEND_URL + "/api/favorites", {
 						method: "POST",
 						headers: {
 							"Content-Type": "application/json",
@@ -101,7 +101,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					});
 				}
 				else{
-					fetch(`https://probable-space-couscous-pjgwq64xwv7qc69w5-3001.app.github.dev/api/favorites/${isFavorite.id}`, {
+					fetch(`${process.env.BACKEND_URL}/api/favorites/${isFavorite.id}`, {
 						method: "DELETE"
 					})
 					.then(response => response.json()) 
