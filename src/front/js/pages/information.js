@@ -18,13 +18,18 @@ export const Information = props => {
 	},[])
 
 	return entity ? (
-			<div className="d-flex information">
-				<div>
-					<img src={entity.image} alt={entity.name} />
-				</div>
-				<div className="card-information">
-					<h5>{entity.name}</h5>
-					<p>{entity.description}</p>
+			<div className="information h-75">
+				<div className="row align-items-center h-100">
+					<div className="col-12 col-lg-8  px-0">
+						<img src={entity.image} alt={entity.name} />
+					</div>
+
+					<div className="col-12 col-lg-4  px-0">
+						<div className="card-information">
+							<h5>{entity.name}</h5>
+							<p>{entity.description}</p>
+						</div>
+					</div>
 				</div>
 			</div>
 	) : <></>;
