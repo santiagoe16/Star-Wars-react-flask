@@ -25,7 +25,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 		},
 		actions: {
 			getCharacters: () => {
-				fetch("https://starwars-databank-server.vercel.app/api/v1/characters?page=1&limit=400")
+				fetch("https://starwars-databank-server.vercel.app/api/v1/characters?page=1&limit=1000")
 					.then((response) => response.json())
 					.then((result) => {
 						setStore({ characters: result.data });
@@ -33,7 +33,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.catch((error) => console.error("Error fetching characters:", error));
 			},
 			getLocations: () => {
-				fetch("https://starwars-databank-server.vercel.app/api/v1/locations?page=1&limit=50")
+				fetch("https://starwars-databank-server.vercel.app/api/v1/locations?page=1&limit=1000")
 					.then((response) => response.json())
 					.then((result) => {
 						setStore({ locations: result.data });
@@ -41,7 +41,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.catch((error) => console.error("Error fetching characters:", error));
 			},
 			getVehicles: () => {
-				fetch("https://starwars-databank-server.vercel.app/api/v1/vehicles?page=1&limit=50")
+				fetch("https://starwars-databank-server.vercel.app/api/v1/vehicles?page=1&limit=1000")
 					.then((response) => response.json())
 					.then((result) => {
 						setStore({ vehicles: result.data });
@@ -49,7 +49,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.catch((error) => console.error("Error fetching characters:", error));
 			},
 			getSpecies: () => {
-				fetch("https://starwars-databank-server.vercel.app/api/v1/species?page=1&limit=50")
+				fetch("https://starwars-databank-server.vercel.app/api/v1/species?page=1&limit=1000")
 					.then((response) => response.json())
 					.then((result) => {
 						setStore({ species: result.data });

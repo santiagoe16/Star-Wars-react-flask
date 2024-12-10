@@ -160,9 +160,9 @@ export const Home = () => {
                     // Mostrar categorías si no hay búsqueda
                     ["characters", "locations", "vehicles", "species"].map((category) => (
                         <div key={category}>
-                            <h1 className="mb-3 text-capitalize">{category}</h1>
+                            <h1 className="mb-3 text-capitalize">{category}: {(store[category] || []).length}</h1>
                             <div className="mb-5 card-container">
-                                {(store[category] || []).map((item) => (
+                                {(store[category] || []).slice(0,100).map((item) => (
                                     <Card
                                         key={item._id}
                                         name={item.name}
