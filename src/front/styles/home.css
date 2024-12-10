@@ -92,9 +92,6 @@
     background-color: #1D1E1F;
 }
 
-.information{
-}
-
 .card-information{
     background-color: rgb(29, 30, 31);
     padding: 22px;
@@ -116,8 +113,6 @@
 .information p{
     color: rgb(181, 183, 183);
 }
-
-
 
 .container{
     height: 90%;
@@ -152,6 +147,9 @@
     background-color: rgb(218, 121, 56);
     color: white;
     border-radius: 6px;
+}
+.pagination{
+    padding-bottom: 30px;
 }
 
 .orange-btn{

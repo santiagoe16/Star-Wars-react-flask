@@ -106,7 +106,7 @@ export const Home = () => {
                                 </div>
 
                                 {/* Controles de paginación */}
-                                <div className="pagination d-flex justify-content-center">
+                                <div className="pagination d-flex justify-content-center ">
                                     
                                     <button
                                         className="pagination-buttons-notactive me-2"
