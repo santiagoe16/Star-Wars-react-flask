@@ -1,8 +1,14 @@
 # Star-Wars-react-flask
 
+![image](https://github.com/user-attachments/assets/675a7fd9-a120-4e4c-a067-517fe0ce6c6e)
+
 ## Descripción
 
 **Star-Wars-react-flask** es una aplicación web que consume una API de Star Wars para mostrar información detallada sobre personajes, ubicaciones, especies y vehículos. Los usuarios pueden explorar estas entidades de manera organizada, agregarlas a su lista de favoritos y gestionarlas (añadir o eliminar) en tiempo real. Los favoritos se almacenan en una base de datos utilizando Flask y Python en el backend.
+
+## Demo en vivo
+
+Puedes acceder a la aplicación desplegada aquí: [Star Wars React Flask](https://sample-service-name-81su.onrender.com/)
 
 ## Tecnologías utilizadas
 
