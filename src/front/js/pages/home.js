@@ -113,14 +113,14 @@ export const Home = () => {
                                         onClick={() => handlePageChange(1)}
                                         disabled={currentPage < 2}
                                     >
-                                        Primera
+                                        First
                                     </button>
                                     <button
                                         className="pagination-buttons-notactive me-2"
                                         onClick={() => handlePageChange(currentPage - 1)}
                                         disabled={currentPage < 2}
                                     >
-                                        Anterior
+                                        Previous
                                     </button>
                                         
 
@@ -141,13 +141,13 @@ export const Home = () => {
                                         onClick={() => handlePageChange(currentPage + 1)}
                                         disabled={currentPage == totalPages}
                                     >
-                                        Siguiente
+                                        Next
                                     </button>
                                     <button
                                         className="pagination-buttons-notactive"
                                         onClick={() => handlePageChange(totalPages)}
                                     >
-                                        Última
+                                        Last
                                     </button>
                                     
                                 </div>
