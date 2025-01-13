@@ -8,7 +8,7 @@
 
 ## Demo en vivo
 
-Puedes acceder a la aplicación desplegada aquí: [Star Wars React Flask](https://sample-service-name-81su.onrender.com/)
+Puedes acceder a la aplicación desplegada aquí: [Star Wars React Flask](https://sample-service-name-ybbz.onrender.com/)
 
 ## Tecnologías utilizadas
 
